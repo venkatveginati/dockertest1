@@ -23,7 +23,7 @@ pipeline {
         stage('Push Image To DockerHUB') {
             steps {
                 script {
-                    docker.withRegistry( 'venkatveginati095/dockertest1', registryCredential ) {
+                    docker.withRegistry( 'venkatveginati095/dockertest1:v1', registryCredential ) {
                         dockerImage.push()
                     }
                 }
