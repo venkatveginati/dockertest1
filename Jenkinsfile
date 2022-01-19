@@ -2,7 +2,7 @@ pipeline {
     environment {
         registry = 'venkatveginati/dockertest1'
         registryCredential = 'DockerHub'
-        dockerSwarmManagevenkatveginati/dockertest1
+        dockerSwarmManage = '10.40.1.26:2375'
         dockerhost = '10.40.1.26'
         dockerImage = ''
     }
