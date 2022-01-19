@@ -39,7 +39,7 @@ pipeline {
         }
         stage('Verifying The Deployment') {
             steps {
-                sh 'curl http://$dockerhost:8100 || exit 1'
+                sh 'curl http://$dockerhost:8100'
                 }
         }
     }
