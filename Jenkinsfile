@@ -13,22 +13,19 @@ pipeline {
                 git 'https://github.com/venkatveginati/dockertest1.git'
             }
         }
-        stage('Building our image') {
-            steps {
-                script {
-                    dockerImage = docker.build registry + ":v$BUILD_NUMBER"
-                }
+       stage ('Docker Build') {
+        steps{
+            script{
+     // Build and push image with Jenkins' docker-plugin
+    
+        withDockerRegistry([credentialsId: "dockerhub", url: "https://index.docker.io/v1/"]) {
+        image = docker.build("venkatveginati/dockertest1", "MyAwesomeApp")
+        image.push()    
+        }
+      
             }
         }
-        stage('Push Image To DockerHUB') {
-            steps {
-                script {
-                    docker.withRegistry( 'venkatveginati095/dockertest1:v1', registryCredential ) {
-                        dockerImage.push()
-                    }
-                }
-            }
-        }
+    }
         stage('Cleaning up') {
             steps {
                 sh "docker rmi $registry:v$BUILD_NUMBER"
