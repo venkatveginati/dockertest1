@@ -18,7 +18,7 @@ pipeline {
             script{
      // Build and push image with Jenkins' docker-plugin
     
-        withDockerRegistry([credentialsId: "dockerhub", url: "https://index.docker.io/v1/"]) {
+        withDockerRegistry([credentialsId: "DockerHub", url: "https://index.docker.io/v1/"]) {
         image = docker.build("venkatveginati/dockertest1", "MyAwesomeApp")
         image.push()    
         }
